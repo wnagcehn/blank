@@ -16,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Configuration
 @EnableSwagger2
 /**
@@ -27,6 +28,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
+        // 需携带token的配置
         ParameterBuilder tokenPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<Parameter>();
         tokenPar.name("token")
@@ -41,14 +43,14 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.ideapro.blank.controller"))
                 .paths(PathSelectors.any())
-                .build().globalOperationParameters(pars);
+                .build();//.globalOperationParameters(pars);
     }
 
     @SuppressWarnings("deprecation")
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Blank测试")
-                .description("测试Nemo的API")
+                .title("Blank接口文档")
+                .description("Blank的API")
                 .termsOfServiceUrl("http://blog.csdn.net/penyoudi1")
                 .contact("Comic")
                 .version("1.0")

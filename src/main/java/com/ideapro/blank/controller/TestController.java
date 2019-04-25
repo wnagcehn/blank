@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(value = "文档接口")
+@Api(tags = "测试")
 public class TestController {
     @ApiOperation(value = "新增接口", notes = "新增漫画接口", httpMethod = "POST")
     @ApiImplicitParams({
