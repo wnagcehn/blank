@@ -17,6 +17,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.math.BigDecimal;
@@ -469,6 +470,8 @@ public class Test {
 
 
         System.out.println(StringUtils.contains("100,200,300", "200"));
+
+        System.out.println(getBillMonth());
     }
 
     @AllArgsConstructor
@@ -517,6 +520,12 @@ public class Test {
         c.setMinimalDaysInFirstWeek(4);
         c.set(Calendar.DAY_OF_WEEK, c.getFirstDayOfWeek());
         return c;
+    }
+
+    private static String getBillMonth() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -1);
+        return DateFormatUtils.format(calendar.getTime(), "yyyy年MM月");
     }
 
     private static void addaaaa(AtomicInteger aaaa) {
